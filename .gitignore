@@ -1,0 +1,41 @@
+# Environment - DO NOT COMMIT SECRETS
+.env
+.env.local
+.env.*.local
+backend/.env
+frontend/.env
+image-service/.env
+**/.env
+
+# Dependencies
+node_modules/
+vendor/
+
+# Build outputs
+dist/
+build/
+*.exe
+*.dll
+*.so
+*.dylib
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Uploads
+uploads/
+*.log
+
+# Database
+*.db
+*.sqlite
+
+# Go
+backend/tmp/

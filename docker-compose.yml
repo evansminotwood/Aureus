@@ -1,0 +1,71 @@
+services:
+  # PostgreSQL Database (Free)
+  postgres:
+    image: postgres:15-alpine
+    container_name: aureus-db
+    environment:
+      POSTGRES_DB: aureus
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # MinIO (Free S3-compatible storage)
+  minio:
+    image: minio/minio
+    container_name: aureus-storage
+    command: server /data --console-address ":9001"
+    environment:
+      MINIO_ROOT_USER: minioadmin
+      MINIO_ROOT_PASSWORD: minioadmin
+    ports:
+      - "9000:9000"
+      - "9001:9001"
+    volumes:
+      - minio_data:/data
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:9000/minio/health/live"]
+      interval: 30s
+      timeout: 20s
+      retries: 3
+
+  # Redis (Free cache/session store)
+  redis:
+    image: redis:7-alpine
+    container_name: aureus-redis
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # Python Image Analysis Service
+  image-service:
+    build:
+      context: ./image-service
+      dockerfile: Dockerfile
+    container_name: aureus-image-service
+    ports:
+      - "8001:8000"
+    environment:
+      - PYTHONUNBUFFERED=1
+    volumes:
+      - ./image-service:/app
+    depends_on:
+      - redis
+
+volumes:
+  postgres_data:
+  minio_data:
+  redis_data:
