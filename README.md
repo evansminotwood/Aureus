@@ -426,20 +426,25 @@ pytest
 - [x] Price history tracking and snapshots
 - [x] Metal composition and melt value calculations
 - [x] Multi-coin detection in images
-
-### In Progress
-- [ ] Frontend UI for portfolio management
-- [ ] Image upload and display in UI
-- [ ] Portfolio analytics dashboard
-- [ ] Mobile-responsive design improvements
+- [x] Frontend UI for portfolio management (dashboard, sidebar, grid/table views)
+- [x] Image upload and display in UI (multi-coin upload with preview)
+- [x] Portfolio analytics dashboard (statistics, charts, ROI tracking)
+- [x] Mobile-responsive design (Tailwind responsive breakpoints)
+- [x] CSV export functionality
+- [x] Coin detail dialogs (view, edit, delete)
+- [x] PCGS price display with certification lookup
+- [x] Melt value display and calculations
+- [x] Price history charts (Recharts visualization)
+- [x] Image zoom and gallery features
+- [x] Settings management
 
 ### Planned Features
 - [ ] YOLOv8 integration for improved coin detection
 - [ ] Coin grade estimation from images
 - [ ] Batch image uploads and processing
-- [ ] Export functionality (CSV, PDF reports)
+- [ ] PDF report generation
 - [ ] Price alerts and notifications
-- [ ] Collection statistics and trends
+- [ ] Advanced collection statistics and trends
 - [ ] Sharing collections publicly
 - [ ] Mobile apps (React Native)
 - [ ] World coin support (beyond US coins)
