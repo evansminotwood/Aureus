@@ -1,5 +1,7 @@
 # 🪙 Aureus - Coin Portfolio Manager
 
+![Aureus Logo](frontend/public/Aureus.png)
+
 A full-stack application for managing coin collections with AI-powered image analysis. Aureus helps collectors track their portfolios, identify coins using machine learning, and monitor values over time.
 
 ## Features
